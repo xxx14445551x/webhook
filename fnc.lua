@@ -5,7 +5,7 @@ if not req then
     warn("no function http")
 end 
 
-local function webhook(hook, mes)
+_G.webhook = function(hook, mes)
     local data = {
         embeds = {{
             description = mes
@@ -20,4 +20,3 @@ local function webhook(hook, mes)
     })
 end
 
-return webhook
