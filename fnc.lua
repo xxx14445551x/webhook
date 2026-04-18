@@ -19,3 +19,5 @@ local function webhook(hook, mes)
         Body = json
     })
 end
+
+return webhook
