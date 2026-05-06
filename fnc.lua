@@ -5,7 +5,16 @@ if not req then
     warn("no function http")
 end 
 
-_G.webhook = function(hook, color, name , mes)
+if not getgenv() then
+    warn("no function getgenv")
+end
+
+local function WebHook(table)
+    local H = table.Hook
+    local N = table.Name
+    local M = table.Mes
+    local C = table.Color
+
     local colors = {
         black = 0x000000,
         white = 0xFFFFFF,
@@ -27,23 +36,27 @@ _G.webhook = function(hook, color, name , mes)
 
     local emcolor = colors.dark
 
-    if color and type(color) == "string" then
-        local colorkey = string.lower(color) 
+    if C and type(C) == "string" then
+        local colorkey = string.lower(C) 
         emcolor = colors[colorkey] or colors.dark
     end
 
     local data = {
-        username = name .. " ✦",
+        username = N,
         embeds = {{
-            description = mes,
+            description = M,
             color = emcolor
         }}
     }
     local json = http:JSONEncode(data)
     req({
-        Url = hook,
+        Url = H,
         Method = "POST",
         Headers = {["Content-Type"] = "application/json"},
         Body = json
     })
 end
+
+getgenv().Settings = WebHook
+
+
