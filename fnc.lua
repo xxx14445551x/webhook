@@ -57,6 +57,4 @@ local function WebHook(table)
     })
 end
 
-getgenv().Settings = WebHook
-
-
+return WebHook
