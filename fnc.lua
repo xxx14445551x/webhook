@@ -12,7 +12,7 @@ end
 local function WebHook(table)
     local H = table.Hook
     local N = table.Name
-    local M = table.Mes
+    local M = table.Message
     local C = table.Color
 
     local colors = {
@@ -57,4 +57,6 @@ local function WebHook(table)
     })
 end
 
-return WebHook
+getgenv().WebHook = WebHook
+return getgenv().WebHook
+
